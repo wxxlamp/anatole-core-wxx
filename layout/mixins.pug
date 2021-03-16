@@ -16,20 +16,23 @@ mixin make_post(item, is_detail)
 			.info
 				if is_current('about')
 					span
-				else if is_current('guestbook')
+				else if is_current('link')
+					span
+				else if is_current('categories')
 					span
 				else
 					i.fa.fa-sun-o
 					span.date= date(item.date, 'YYYY-MM-DD')
 					if item.tags
 						i.fa.fa-tag
-						- item.categories.sort('posts').each(function(item) {
-								a.tag(href=config.root + item.path, title= item.name)= item.name + " "
-						- });
 						- item.tags.sort('posts').each(function(item) {
 								a.tag(href=config.root + item.path, title= item.name)= item.name + " "
 						- });
-
+					if item.categories
+						i.fa.fa-star
+						- item.categories.sort('posts').each(function(item) {
+								a.tag(href=config.root + item.path, title= item.name)= item.name + " "
+						- });
 					span.leancloud_visitors
 
 
@@ -66,10 +69,15 @@ mixin postList()
 					| </ul><div class="listing-title">
 					!= year
 					| </div><ul class="listing">
-			
+
 			.listing-item
 				.listing-post
 					a(href= url_for(item.path), title= item.title)= item.title
 					div.post-time
 						span.date= date(item.date, 'MM-DD')
 		- })
+
+mixin make_category(item)
+	.listing-item
+		.listing-post
+			item.categories

@@ -20,6 +20,11 @@ block content
                 #myCanvasContainer.widget.tagcloud(align='center')
                     canvas#resCanvas()
                         != tagcloud()
+    else if is_current('categories')
+        .listing-item
+            .listing-post
+                include mixins
+                +make_category(page)
     else
         .autopagerize_page_element: .content: .post-page
             include mixins
