@@ -3,6 +3,12 @@ extends partial/layout
 block site_title
     if is_current('tags')
         !=  "标签 · " + config.title
+    else if is_current('categories')
+        != "分类 · " + config.title
+    else if is_current('about')
+        != "关于 · " + config.title
+    else if is_current('links')
+        != "友链 · " + config.title
     else
         != page.title + " · " + config.title
 
@@ -21,10 +27,8 @@ block content
                     canvas#resCanvas()
                         != tagcloud()
     else if is_current('categories')
-        .listing-item
-            .listing-post
-                include mixins
-                +make_category(page)
+        .autopagerize_page_element: .content
+            !=list_categories()
     else
         .autopagerize_page_element: .content: .post-page
             include mixins
