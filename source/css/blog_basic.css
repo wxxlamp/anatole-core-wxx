@@ -536,21 +536,22 @@ dl dt {
 .category-list{
   position: relative;
   width: 80%;
-  margin-top: 15%;
-  margin-left: 7.2%;
+  /*margin-top: 15%;*/
+  /*margin-left: 7.2%;*/
+  margin: 15% auto;
+  writing-mode:vertical-lr;
 }
 .category-list-item{
   position: relative;
-  width: 80%;
-  margin-top: 1.5%;
+  width: 10%;
+  /*margin-bottom: 10%;*/
   margin-left: 15%;
 }
 .category-list-link{
-
+  color: #565654;
+  font-size: 15px;
 }
 .category-list-count{
-  position: relative;
-  width: 80%;
-  margin-top: 1%;
-  margin-left: 40%;
+  /*margin-top: 20%;*/
+  display: none;
 }
